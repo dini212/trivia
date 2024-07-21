@@ -13,6 +13,7 @@ import quiz.trivia.service.ScoreService;
 import quiz.trivia.service.UserService;
 import quiz.trivia.utils.Res;
 import quiz.trivia.utils.dto.response.GetScoreResponse;
+import quiz.trivia.utils.dto.response.LeaderboardResponse;
 
 @RestController
 @RequestMapping("/scores")
@@ -34,8 +35,8 @@ public class ScoredController {
 
     @GetMapping("/leaderboard")
     public ResponseEntity<?> getLeaderboard() {
-        List<Score> scores = scoreService.getHighestScore();
-        return Res.renderJson(scores, "Leaderboard successfully made", HttpStatus.OK);
+       List<LeaderboardResponse> responses = scoreService.getLeaderboard();
+       return Res.renderJson(responses, "successfully make leaderboard", HttpStatus.CREATED);
     }
     
 }

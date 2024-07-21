@@ -41,18 +41,4 @@ public class GetScoreResponse {
                 .time(latestTime)
                 .build();
     }
-
-    //  public static GetScoreResponse response(UserService userService, Integer userId, List<Score> scores) {
-    //     User user = userService.getUser(userId); // Fetch user by ID
-    //     int totalScore = scores.stream().mapToInt(Score::getScored).sum();
-    //     int correctStreak = scores.stream().mapToInt(Score::getCorrectStreak).sum();
-    //     int incorrectStreak = scores.stream().mapToInt(Score::getIncorrectStreak).sum();
-
-    //     return GetScoreResponse.builder()
-    //             .name(user != null ? user.getName() : "anon")
-    //             .totalScore(totalScore)
-    //             .correctStreak(correctStreak)
-    //             .incorrectStreak(incorrectStreak)
-    //             .build();
-    // }
 }
