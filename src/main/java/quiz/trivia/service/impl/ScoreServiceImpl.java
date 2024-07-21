@@ -13,7 +13,7 @@ import quiz.trivia.service.ScoreService;
 
 @Service
 public class ScoreServiceImpl implements ScoreService {
-
+    
     @Autowired
     ScoreRepository scoreRepository;
 
@@ -22,21 +22,25 @@ public class ScoreServiceImpl implements ScoreService {
 
     @Override
     public Score addScore(Integer userId, boolean correct) {
+        
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("user not found"));
-        List<Score> scores = scoreRepository.findTop5ByOrderByScoredDesc();
+        List<Score> scores = scoreRepository.findByUser(user);
         Score score;
 
     if (scores.isEmpty()) {
         score = new Score();
-        score.setUserId(user);
+        score.setAnswered(0);
         score.setTime(LocalDateTime.now());
         score.setScored(0); 
         score.setCorrectStreak(0); 
         score.setIncorrectStreak(0); 
+        score.setUser(user);
 
     } else {
-        score = scores.get(0); 
+        score = scores.get(0);
     }
+
+    score.setAnswered(score.getAnswered() + 1);
 
     if (correct) {
         score.setCorrectStreak(score.getCorrectStreak() + 1);
@@ -51,7 +55,10 @@ public class ScoreServiceImpl implements ScoreService {
 
     score.setTime(LocalDateTime.now());
 
-    return scoreRepository.save(score);
+    Score savedScore = scoreRepository.save(score);
+
+    return scoreRepository.save(savedScore);
+    
 }
 
     @Override
@@ -62,13 +69,13 @@ public class ScoreServiceImpl implements ScoreService {
     @Override
     public List<Score> getScore(Integer userId) {
         User user = userRepository.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
-        return scoreRepository.findByUserId(user);
+        return scoreRepository.findByUser(user);
                 
     }
 
     @Override
     public boolean AnsweredQuestion(Score score) {
-       return score.getAnswered() >= 10;
+       return score.getAnswered() >= 5;
     }
     
 }

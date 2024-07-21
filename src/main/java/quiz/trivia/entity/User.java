@@ -28,7 +28,7 @@ public class User {
 
     private String name;
 
-    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Score> scores;
     
 }

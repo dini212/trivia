@@ -42,7 +42,7 @@ public class QuestionController {
         String message = correctAnswer ? "correct" : "incorrect";
 
         if (scoreService.AnsweredQuestion(score)) {
-            message = "Congratulations! You answered 10 questions. Your total score is " + score.getScored();
+            message = "Congratulations! You answered 5 questions";
         }
 
         AnswerResponse response = AnswerResponse.response(score, message);

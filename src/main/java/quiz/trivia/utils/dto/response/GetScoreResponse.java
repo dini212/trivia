@@ -6,7 +6,6 @@ import java.util.List;
 import lombok.*;
 import quiz.trivia.entity.Score;
 import quiz.trivia.entity.User;
-import quiz.trivia.service.UserService;
 
 @Data
 @Builder

@@ -24,9 +24,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public User create(UserRequest request) {
         User newUser = request.convert();
-        String name = newUser.getName() == null || newUser.getName().isEmpty() ? "anon" : newUser.getName();
-        newUser.setName(name);
-
         return userRepository.saveAndFlush(newUser);
     }
 

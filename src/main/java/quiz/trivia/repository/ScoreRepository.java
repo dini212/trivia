@@ -13,5 +13,5 @@ public interface ScoreRepository extends JpaRepository<Score, Integer> {
 
     List<Score> findTop5ByOrderByScoredDesc();
 
-    List<Score> findByUserId(User user);
+    List<Score> findByUser(User user);
 }
