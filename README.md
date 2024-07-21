@@ -32,6 +32,8 @@ The Trivia Quiz application allows users to answer trivia questions and track th
    - The 'correctStreak' is reset to 0.
 
 
+
+
 Note : 
 Feel free if you want to try! I already share sql and collection postman. I use mySqlDriver for depedency tool.
 The Trivia API didn't have the answer for question, so I search the google for the answer.
